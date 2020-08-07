@@ -50,13 +50,19 @@ n_name|char(25)
 n_regionkey|integer
 n_comment|varchar(152)
 
-## REGION
+## ORDERS
 
 Nome | Tipo de Dado
 -|-
-r_regionkey|integer
-r_name|char(25)
-r_comment|varchar(152)
+o_orderkey|integer
+o_custkey|integer
+o_orderstatus|char(1)
+o_totalprice|decimal(15,2)
+o_orderdate|date
+o_orderpriority|char(15)
+o_clerk|char(15)
+o_shippriority|integer
+o_comment|varchar(79)
 
 ## PART
 
@@ -72,7 +78,42 @@ p_container|char(10)
 p_retailprice|decimal(15,2)
 p_comment|varchar(23)
 
-# Relacionamentos
+## PARTSUPP
+
+Nome | Tipo de Dado
+-|-
+ps_partkey|integer
+ps_supkey|integer
+ps_availqty|integer
+ps_supplycost|decimal(15,2)
+ps_comment|varchar(199)
+
+## REGION
+
+Nome | Tipo de Dado
+-|-
+r_regionkey|integer
+r_name|char(25)
+r_comment|varchar(152)
+
+## SUPPLIER
+
+Nome | Tipo de Dado
+-|-
+s_supkey|integer
+s_name|char(25)
+s_address|varchar(40)
+s_nationkey|integer
+s_phone|char(15)
+s_acctbal|decimal(15,2)
+s_comment|varchar(101)
+
+
+## ER
+
+![tpc-ds](images/tpcds-er.png)
+
+### Relacionamentos
 
 Tabela|Join|Tabela
 -|-|-

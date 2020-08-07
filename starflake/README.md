@@ -8,35 +8,38 @@
    - customer
    - nation
    - region
+   - order status
+   - order priority
+   - ship priority
+   - customer market segment
 
 - Dimension
-   - o_orderkey
-   - o_custkey
-   - c_nationkey
-   - r_regionkey
+   - c_name
+   - n_name
+   - r_name
+   - o_orderstatus
+   - o_orderpriority
+   - o_shipprority
+   - c_marketsegment
 - Measure
+   - o_orderkey: COUNT
    - o_totalprice: COUNT e SUM
-   - o_orderpriority: COUNT
-   - o_shippriority: COUNT
    - c_acctbal: COUNT e SUM
-   - c_mktgsegment: COUNT
+- Partition
+   - o_orderdate
+
 
 ```sql
 SELECT 
    ORD.o_orderkey, 
+   ORD.o_orderdate,
    ORD.o_orderstatus, 
-   ORD.o_totalprice, 
-   ORD.o_orderdate, 
    ORD.o_orderpriority, 
-   ORD.o_clerk, 
    ORD.o_shippriority,
-   CUS.c_custkey,
+   ORD.o_totalprice, 
    CUS.c_name,
-   CUS.c_acctbal,
    CUS.c_mktgsegment,
-   NAT.n_nationkey,
    NAT.n_name,
-   REG.r_regionkey,
    REG.r_name
 FROM
    Preparation.orders ORD
